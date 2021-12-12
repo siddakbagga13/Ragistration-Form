@@ -37,7 +37,22 @@
         }    
         td:last-child {    
             text-align: left;    }
-    
+            .cursor {
+    position: fixed;
+    border-radius: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    pointer-events: none;
+    left: -100px;
+    top: 50%;
+    visibility: visible;
+    mix-blend-mode: difference;
+    background-color: #0a0a0a;
+    border: 3px solid #fff;
+    opacity: 0.6;
+    height: 30px;
+    width: 30px;
+    transition: all 300ms ease-out;
+  }
     </style> 
 </head>    
     <script>    
@@ -146,11 +161,18 @@
             </tr>    
             <tr>    
                 <td>    
-                    <input type="submit" name="submit" value="Submit">    
-                    <input type="reset" name="reset" value="Reset">    
+                    <input type="submit" name="submit"style="cursor: pointer;" value="Submit">    
+                    <input type="reset" name="reset" style="cursor: pointer;" value="Reset">    
                 </td>    
             </tr>             
         </table>    
+        <div class='cursor' id="cursor"></div>
+        <script>var cursor = document.getElementById("cursor");
+          document.body.addEventListener("mousemove", function(c) {
+            cursor.style.left = c.clientX + "px",
+              cursor.style.top = c.clientY + "px";
+          });
+          </script>
     </form>    
 </body>    
 </html>
